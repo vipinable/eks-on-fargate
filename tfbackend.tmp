@@ -17,7 +17,7 @@ terraform {
   }
   backend "s3" {
     region	   = "us-east-1"
-    bucket         = "aws-budget-tfstatefilestore-598271471667"
+    bucket         = "eks-tfstatefilestore-598271471667"
     key            = "terraform.tfstate"
     dynamodb_table = "aws-budget-tfstatefilestorelock"
   }
