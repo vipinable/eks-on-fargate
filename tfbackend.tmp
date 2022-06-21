@@ -19,7 +19,7 @@ terraform {
     region	   = "us-east-1"
     bucket         = "eks-tfstatefilestore-598271471667"
     key            = "terraform.tfstate"
-    dynamodb_table = "aws-budget-tfstatefilestorelock"
+    dynamodb_table = "eks-tfstatefilestorelock"
   }
 }
 
