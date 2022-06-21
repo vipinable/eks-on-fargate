@@ -35,4 +35,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: cat tfbackend.tmp > tfbackend.tf ; terraform init -input=false 
+        run: sleep 30 && cat tfbackend.tmp > tfbackend.tf ; terraform init -input=false 
