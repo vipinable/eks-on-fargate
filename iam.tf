@@ -124,7 +124,7 @@ resource "kubernetes_config_map" "aws_auth_configmap" {
 }
 
 locals {
-  kubeconfig = <<<EOF
+  kubeconfig = <<EOF
 apiVersion : v1
 clusters :
 - cluster:
