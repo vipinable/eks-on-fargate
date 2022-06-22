@@ -32,7 +32,7 @@ jobs:
           EXCLUDELIST='tfstatefilestore'
           DESTROYLIST=''
           for resource in $(terraform state list);do
-            if grep -q "${resource}" <<< "${EXCLUDELIST}" ;then
+            if grep -qi "${resource}" <<< "${EXCLUDELIST}" ;then
                 echo "Skipped deletion of ${resource}"
             else
                 DESTROYLIST="${DESTROYLIST} -target=${resource}"
