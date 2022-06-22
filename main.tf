@@ -78,7 +78,12 @@ resource "aws_eks_cluster" "cluster01" {
     aws_iam_role_policy_attachment.AmazonManaged-AmazonEKSVPCResourceController,
   ]
 }
-
+   
+ provisioner "local-exec" {
+    command = "aws sts get-caller-identity > /tmp/test.txt"
+    depends_on = [ aws_eks_cluster.cluster01 ]
+  }
+    
 output "endpoint" {
   value = aws_eks_cluster.cluster01.endpoint
 }
