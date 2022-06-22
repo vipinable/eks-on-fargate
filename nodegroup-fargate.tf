@@ -28,3 +28,4 @@ resource "aws_iam_role_policy_attachment" "AmazonManaged-AmazonEKSFargatePodExec
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
   role       = aws_iam_role.fargate-ng-role.name
 }
+
