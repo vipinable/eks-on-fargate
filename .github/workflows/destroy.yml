@@ -29,7 +29,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          EXCLUDELIST='aws_dynamodb_table.tfstatefilestorelock,aws_s3_bucket.tfstatefilestore'
+          EXCLUDELIST='tfstatefilestore'
           DESTROYLIST=''
           for resource in $(terraform state list);do
             if grep -q "${resource}" <<< "${EXCLUDELIST}" ;then
