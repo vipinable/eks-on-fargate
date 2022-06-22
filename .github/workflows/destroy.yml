@@ -29,10 +29,10 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          EXCLUDELIST='tfstatefilestore'
+          EXCLUDELIST='aws_dynamodb_table.tfstatefilestorelock,aws_s3_bucket.tfstatefilestore,aws_s3_bucket.tfstatefilestore,module.tfstatefilestore.aws_s3_bucket_acl.bucketacl,module.tfstatefilestore.aws_s3_bucket_ownership_controls.ownershipcontrol,module.tfstatefilestore.aws_s3_bucket_public_access_block.publicaccesscontrol,module.tfstatefilestore.aws_s3_bucket_server_side_encryption_configuration.encryptionconfig'
           DESTROYLIST=''
           for resource in $(terraform state list);do
-            if grep -qi "${resource}" <<< "${EXCLUDELIST}" ;then
+            if grep -q "${resource}" <<< "${EXCLUDELIST}" ;then
                 echo "Skipped deletion of ${resource}"
             else
                 DESTROYLIST="${DESTROYLIST} -target=${resource}"
