@@ -15,6 +15,12 @@ terraform {
       version = "~> 4.19.0"
     }
   }
+  backend "s3" {
+    region	   = "us-east-1"
+    bucket         = "eks-tfstatefilestore-598271471667"
+    key            = "terraform.tfstate"
+    dynamodb_table = "eks-tfstatefilestorelock"
+  }
 }
 
 #remote backend s3 storage
