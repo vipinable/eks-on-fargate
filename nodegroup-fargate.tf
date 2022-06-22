@@ -1,5 +1,5 @@
 resource "aws_eks_fargate_profile" "fargate-ng" {
-  cluster_name           = aws_eks_cluster.cluster01.name}
+  cluster_name           = aws_eks_cluster.cluster01.name
   fargate_profile_name   = "fargate-ng-${aws_eks_cluster.cluster01.name}"
   pod_execution_role_arn = aws_iam_role.fargate-ng-role.arn
   subnet_ids             =  [module.vpc.private_subnet1,module.vpc.private_subnet2]
@@ -28,4 +28,3 @@ resource "aws_iam_role_policy_attachment" "AmazonManaged-AmazonEKSFargatePodExec
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy"
   role       = aws_iam_role.fargate-ng-role.name
 }
-
