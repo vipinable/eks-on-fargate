@@ -124,7 +124,7 @@ resource "kubernetes_config_map" "aws_auth_configmap" {
 }
 
 locals {
-  kubeconfig = <<EOF
+  kubeconfig = 
 apiVersion : v1
 clusters :
 - cluster:
@@ -152,7 +152,7 @@ users :
         - --cluster-name
         - "${aws_eks_cluster.cluster01.id}"
       command : aws
-  EOF
+ 
 }
 
 
