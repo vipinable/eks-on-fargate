@@ -28,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "AmazonManaged-AmazonEKSVPCResourceCon
   role       = aws_iam_role.eks-cluster-role.name
 }
   
-resource "aws_iam_role" "eks-node_role" {
+resource "aws_iam_role" "eks-node-role" {
   name = "eks-node_role"
 
   assume_role_policy = jsonencode({
@@ -45,17 +45,17 @@ resource "aws_iam_role" "eks-node_role" {
 
 resource "aws_iam_role_policy_attachment" "AmazonManaged-AmazonEKSWorkerNodePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
-  role       = aws_iam_role.node_role.name
+  role       = aws_iam_role.eks-node-role.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonManaged-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
-  role       = aws_iam_role.node_role.name
+  role       = aws_iam_role.eks-node-role.name
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonManaged-AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
-  role       = aws_iam_role.node_role.name
+  role       = aws_iam_role.eks-node-role.name
 }
  
 resource "aws_cloudwatch_log_group" "cluster_log" {
