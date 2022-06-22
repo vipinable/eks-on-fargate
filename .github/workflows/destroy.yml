@@ -38,4 +38,5 @@ jobs:
                 DESTROYLIST="${DESTROYLIST} -target=${resource}"
             fi
           done
+          echo ${DESTROYLIST}
           terraform apply -auto-approve -input=false -destroy ${DESTROYLIST}
