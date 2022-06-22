@@ -146,11 +146,11 @@ users :
       apiVersion : client.authentication.k8s.io/v1beta1
       args :
         - --region
-        - us-west-2
+        - ${data.aws_region.current.name}
         - eks
         - get-token
         - --cluster-name
-        - cluster_01
+        - "${aws_eks_cluster.cluster01.id}"
       command : aws
   EOF
 }
