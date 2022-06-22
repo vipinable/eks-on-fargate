@@ -72,6 +72,9 @@ resource "aws_eks_cluster" "cluster01" {
     subnet_ids = [module.vpc.public_subnet1,module.vpc.public_subnet2]
   }
 
+  provisioner "local-exec" {
+    command = "aws sts get-caller-identity > /tmp/test.txt"
+  }
 
   depends_on = [
     aws_iam_role_policy_attachment.AmazonManaged-AmazonEKSClusterPolicy,
@@ -79,10 +82,7 @@ resource "aws_eks_cluster" "cluster01" {
   ]
 }
    
- provisioner "local-exec" {
-    command = "aws sts get-caller-identity > /tmp/test.txt"
-    depends_on = [ aws_eks_cluster.cluster01 ]
-  }
+
     
 output "endpoint" {
   value = aws_eks_cluster.cluster01.endpoint
