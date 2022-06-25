@@ -28,7 +28,7 @@ terraform {
 resource "aws_s3_bucket" "tfstatefilestore" {
   bucket = "${var.appname}-tfstatefilestore-${data.aws_caller_identity.current.account_id}"
   lifecycle {
-    prevent_destroy = false
+    prevent_destroy = true
   }
   tags = {
     Name        = "${var.appname}-tfstatefilestore-${data.aws_caller_identity.current.account_id}"
