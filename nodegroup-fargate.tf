@@ -5,7 +5,7 @@ resource "aws_eks_fargate_profile" "fargate-ng" {
   subnet_ids             =  [module.vpc.private_subnet1,module.vpc.private_subnet2]
 
   selector {
-    namespace = "fargateng"
+    namespace = "default"
   }
 }
 

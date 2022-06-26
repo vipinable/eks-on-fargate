@@ -106,7 +106,7 @@ resource "kubernetes_config_map" "aws_auth_configmap" {
             concat(
                     [
                       {
-                        rolearn : "${aws_iam_role.eks-node-role.arn}"
+                        rolearn : "${aws_iam_role.eks-managed-node_role.arn}"
                         username : "system:node : { { EC2PrivateDNSName } }"
                         groups = ["system:bootstrappers", "system:nodes"]
                       },
