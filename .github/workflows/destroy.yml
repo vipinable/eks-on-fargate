@@ -39,4 +39,4 @@ jobs:
             fi
           done
           echo ${DESTROYLIST}
-          terraform apply -auto-approve -input=false -destroy ${DESTROYLIST}
+          terraform apply -auto-approve -input=false -destroy $(for resource in $(terraform state list | egrep -v "data*");do echo -target=${resource}; done | tr '\n' ' ')
